@@ -53,6 +53,7 @@ void Graph::printGraph()
 // BFS implementation
 void BFS(Graph g, int start)
 {
+    /* I need to implement a counter for even or odd, if even = adversary if odd number its a friend*/ 
     // queue for BFS
     queue<int> queue;
     // Mark all the vertices as not visited
