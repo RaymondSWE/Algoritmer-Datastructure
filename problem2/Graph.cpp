@@ -1,6 +1,9 @@
 #include <iostream>
-#include "GraphADT.h"
+#include <list>
+#include <vector>
 #include <queue>
+#include <stack>
+#include "GraphADT.h"
 using namespace std;
 
 // Constructor
@@ -92,5 +95,6 @@ int main()
     g.addEdge(3, 3);
     cout << "Breadth First Search (starting from vertex 2): \n";
     BFS(g, 2);
+    
     return 0;
 }
