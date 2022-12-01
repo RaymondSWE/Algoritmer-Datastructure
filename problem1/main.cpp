@@ -9,7 +9,9 @@
             if(v[i]>vMax)
             vMax=v[i];
         }
-        std::cout << vMax << '\n';
+        std::vector<int>w(++vMax, 0);
+for(int i=0; i<w.size(); ++i)
+w[v[i]] = w[v[i]] + 1;
         return 0;
     }
     
