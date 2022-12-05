@@ -9,7 +9,7 @@ class Graph
 {
 private:
     int V; // No. of vertices
-    list<int> *adj;
+    list<int>* adj;
 
     /* Pointer to an
     array containing
