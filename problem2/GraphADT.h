@@ -9,7 +9,7 @@ class Graph
 {
 private:
     int V; // No. of vertices
-    list<int> *adj;
+	list<int>* adj; // Pointer to an array containing adjacency lists
 
     /* Pointer to an
     array containing
@@ -25,4 +25,7 @@ public:
     /* print the adjacency list
     representation of graph*/
     void printGraph();
+    
+    // prints BFS traversal from a given source s
+    void BFS(int s);
 };
