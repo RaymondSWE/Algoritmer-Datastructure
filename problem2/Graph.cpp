@@ -5,37 +5,34 @@
 #include <stack>
 #include "GraphADT.h"
 
-
-
-// Do a BFS search
-void Graph::BFS(int s) {
-	// Mark all the vertices as not visited
-	bool* visited = new bool[V];
-	for (int i = 0; i < V; i++)
-		visited[i] = false;
-	// Create a queue for BFS
-	queue<int> queue;
-	// Mark the current node as visited and enqueue it
-	visited[s] = true;
-	queue.push(s);
-	// 'i' will be used to get all adjacent vertices of a vertex
-	
-	list<int>::iterator i;
-	while (!queue.empty()) {
-		// Dequeue a vertex from queue and print it
-		s = queue.front();
-		cout << s << " \n";
-		queue.pop();
-		// Get all adjacent vertices of the dequeued vertex s. If a adjacent has not been visited, then mark it visited and enqueue it
-		for (i = adj[s].begin(); i != adj[s].end(); ++i) {
-			if (!visited[*i]) {
-				visited[*i] = true;
-				queue.push(*i);
-			}
+Graph::Graph(int V) {
+	this->V = V;
+	adj = new list<int>[V];
+}
+void Graph::addEdge(int v, int w) {
+	adj[v].push_back(w); // Add w 
+	//to v’s list.
+}
+bool Graph::isEdge(int v, int w) {
+	list<int>::iterator i; //list 
+	// iterator used in loops
+	for (i = adj[v].begin();
+		i != adj[v].end(); ++i)
+		if (w == *i) return (true);
+	return (false);
+}
+int Graph::getNumNodes() {
+	return V;
+}
+void Graph::printGraph() {
+	for (int v = 0; v < V; ++v) {
+		cout << "\n Adjacency list of node" << v << "\n head ";
+		//Iterate over adj[v] 
+		list<int>::iterator i;
+		for (i = adj[v].begin();
+			i != adj[v].end(); ++i) {
+			cout << "-> " << *i;
+			printf("\n");
 		}
 	}
-
-	// amount search from starting node
-	cout << "Amount of search from starting node: " << s << endl;
-
 }
