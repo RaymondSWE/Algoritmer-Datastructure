@@ -1,5 +1,10 @@
 #include <iostream>
+#include <list>
+#include <vector>
+#include <queue>
+#include <stack>
 #include "GraphADT.h"
+
 Graph::Graph(int V) {
 	this->V = V;
 	adj = new list<int>[V];
@@ -31,3 +36,9 @@ void Graph::printGraph() {
 		}
 	}
 }
+
+
+
+
+
+
