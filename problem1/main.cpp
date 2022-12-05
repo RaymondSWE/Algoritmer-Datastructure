@@ -10,8 +10,16 @@
             vMax=v[i];
         }
         std::vector<int>w(++vMax, 0);
+for(int i{0}; i<v.size(); ++i)
+{
+            w[v[i]] = w[v[i]] +1;
+}
+
 for(int i=0; i<w.size(); ++i)
-w[v[i]] = w[v[i]] + 1;
+{
+    if(w[i]==1)
+    std::cout << i << " ";
+}
         return 0;
     }
     
