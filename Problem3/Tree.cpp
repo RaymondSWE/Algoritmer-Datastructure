@@ -29,7 +29,45 @@ int Tree::getWeight() const{
 
 void Tree::printTree(vector<char>& bitString) const{
 	// wordstring is the word that gets processed by the priorityqueue
-	if (t)
+	for (int i = 0 ; i < bitString.size(); i++) {
+		cout << bitString[i]; 
+	}
+}
+
+Tree* Tree::getLeft()
+{
+	return left;
+}
+
+Tree* Tree::getRight()
+{
+	return right;
+}
+
+char Tree::treeTraversal(Tree* root, int leftOrRight)
+{
+	char currElementValue;
+	
+	if (root == NULL) {
+		cout << "end" << endl; 
+		return NULL; 
+	}
+	else { cout << "root not null" << endl; }
+
+	if (c == NULL) {
+		currElementValue = leftOrRight;
+	}else {
+		cout << c; 
+		currElementValue = c; 
+	}
+	cout << currElementValue;
+	currElementValue = treeTraversal(root->getLeft(), 0);
+	
+	currElementValue = treeTraversal(root->getRight(), 1);
+	 
+	
+
+	return currElementValue;
 }
 
 

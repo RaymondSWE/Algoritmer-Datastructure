@@ -20,4 +20,6 @@ struct TreeWrapper {
     }
 
     Tree* tree;
+
+    
 }; 

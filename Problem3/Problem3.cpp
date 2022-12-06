@@ -60,6 +60,7 @@ int main()
 		pqueue.push(TreeWrapper(new Tree(combWaight, treeWrapper1.tree, treeWrapper2.tree)));
 	}
 
+	pqueue.top().tree->treeTraversal(pqueue.top().tree, -1);
 	pqueue.top().tree->printTree(vectorString);
 	
 }
