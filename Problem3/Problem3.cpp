@@ -1,29 +1,65 @@
 #include <iostream>
 #include <queue>
-
 #include "TreeWrapper.h"
 
-using namespace std; 
+using namespace std;
 
 int main()
 {
-    Tree tree(1, 'h');
-    cout << tree.getWeight() << endl; 
 
-    /*priority_queue <TreeWrapper, vector<TreeWrapper>, greater<TreeWrapper> > pqueue;
-    
-    pqueue.push(TreeWrapper(new Tree(1, 'h')));
-    pqueue.push(TreeWrapper(new Tree(1, 'e')));
-    pqueue.push(TreeWrapper(new Tree(1, 'l')));
-    pqueue.push(TreeWrapper(new Tree(2, '0')));*/
+    TreeWrapper treeWrapper; 
+    string wordString = "magiskafiskmosar";
+    cout << wordString << endl;
 
-    //while (pqueue.size()) {
-    //    
-    //   // cout >> pqueue.top >> endl; 
-    //   /* pqueue.push(TreeWrapper(new Tree(
-    //        pqueue.
-    //    )))
-    //    pqueue.top*/ 
-    //}
+    vector<char> vectorString(wordString.begin(), wordString.end());
+
+	vector<char> tempCharVector(vectorString.size());
+	vector<int>	tempWeightVector(vectorString.size());
+
+
+	
+	int tempVectorIteratorValue = 0;
+
+	priority_queue <TreeWrapper> pqueue;
+
+	for (int i = 0; i < vectorString.size(); i++) {
+		bool isDistinct = true;
+
+		// searchs for duplicates of the current character
+		for (int j = 0; j < vectorString.size(); j++) {
+			if (vectorString[i] == tempCharVector[j] && i != j) {
+				tempWeightVector[j]++;
+				isDistinct = false;
+
+			}
+		}
+		// varifyes that duplicate characters dont get registerd  
+		if (isDistinct) {
+			tempCharVector[tempVectorIteratorValue] = vectorString[i];
+			tempWeightVector[tempVectorIteratorValue] = 1;
+			tempVectorIteratorValue++;
+		}
+	}
+	//creates trees for distinct nodes with the calculated weight
+	for (int i = 0; i < tempCharVector.size(); i++) {
+		if (tempWeightVector[i] > 0) {
+			cout << tempCharVector[i] << ":  " << tempWeightVector[i] << endl;
+			pqueue.push(TreeWrapper(new Tree(tempWeightVector[i], tempCharVector[i])));
+		}
+	}
+
+
+	// assembles the tree 
+	while (pqueue.size() > 1) {
+		TreeWrapper treeWrapper1 = pqueue.top();
+		pqueue.pop();
+		TreeWrapper treeWrapper2 = pqueue.top();
+		pqueue.pop();
+
+		int combWaight = treeWrapper1.tree->getWeight() + treeWrapper2.tree->getWeight();
+		pqueue.push(TreeWrapper(new Tree(combWaight, treeWrapper1.tree, treeWrapper2.tree)));
+	}
+
+	pqueue.top().tree->printTree(vectorString);
+	
 }
-

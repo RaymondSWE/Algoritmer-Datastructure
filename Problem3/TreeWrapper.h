@@ -18,6 +18,6 @@ struct TreeWrapper {
     bool operator<(const TreeWrapper& tw) const {
         return tree->getWeight() > tw.tree->getWeight();
     }
-    
+
     Tree* tree;
-};
+}; 
