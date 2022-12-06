@@ -15,7 +15,7 @@ Tree::Tree(int w, char c) {
 Tree::Tree(int w, Tree* t1, Tree* t2) {
 	
 	weight = w; 
-	c = -1;
+	c = -2;
 	left = t1; 
 	right = t2; 
 };
@@ -30,9 +30,16 @@ int Tree::getWeight() const{
 
 void Tree::printTree(vector<char>& bitString) const{
 	// wordstring is the word that gets processed by the priorityqueue
-	for (int i = 0 ; i < bitString.size(); i++) {
-		cout << bitString[i]; 
+
+	for (int i = 0; i < bitString.size(); i++) {
+		/*if (bitString[i] > 2) {*/
+			cout << " " << bitString[i];
+		/*}
+		else {
+			cout << " " << (int)bitString[i];
+		}*/
 	}
+	cout << endl; 
 }
 
 Tree* Tree::getLeft()
@@ -45,32 +52,63 @@ Tree* Tree::getRight()
 	return right;
 }
 
-char Tree::treeTraversal(Tree* root, int leftOrRight)
+bool Tree::isLeaf(Tree* root1, Tree* root2)
 {
-	char currElementValue;
+	if (root1 == NULL && root2 == NULL) {
+		return true; 
+	}
+	return false;
+}
+
+char Tree::treeTraversal(Tree* root, char leftOrRight)
+{
+	char currElementValue = -3;
 	
 	if (root == NULL) {
-		cout << " no more trees" << endl; 
 		return NULL; 
 	}
-	else { cout << " root not null " << endl; }
 
-	if (root->c != -1) {
+	if (leftOrRight == '0' || leftOrRight == '1') {
+		currElementValue = leftOrRight;
+	}
+	
+
+	/*if (root->c == -2 && leftOrRight != -1) {
 		currElementValue = leftOrRight;
 	}else {
-		cout << ": " << root->c;
-		currElementValue = root->c; 
+		if (root->c != -2) {
+			bitString.push_back(':');
+			currElementValue = root->c;
+		}
+	}*/
+	if (currElementValue != -2) {
+		bitString.push_back(currElementValue);
 	}
-	cout << " : " << getWeight();
-	cout << " : " << (int)currElementValue;
-	currElementValue = treeTraversal(root->getLeft(), 0);
 	
-	currElementValue = treeTraversal(root->getRight(), 1);
-	 
-	cout << currElementValue;
+	treeTraversal(root->getLeft(), '0');
+	treeTraversal(root->getRight(), '1');
+	
+
+	if (isLeaf(root->left, root->right)) {
+		if (root->c != -2) {
+			bitString.push_back(':');
+			bitString.push_back(currElementValue = root->c);
+		}
+		printTree(bitString);
+	}
+
+	/*if (root->c != -2) {
+		printTree(bitString);
+	}*/
+	bitString.pop_back();
+	bitString.pop_back();
+
+	
+	
 
 	return currElementValue;
 }
+
 
 
 

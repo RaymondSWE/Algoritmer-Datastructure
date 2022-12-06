@@ -14,7 +14,8 @@ public:
 	void printTree(vector<char>& bitString) const;
 	Tree* getLeft();  // dont know if allowed to use these 
 	Tree* getRight(); // dont know if allowed to use these
-	char treeTraversal(Tree* root, int vectorPos);// dont know if allowed to use these
+	char treeTraversal(Tree* root, char leftOrRight);// dont know if allowed to use these
+	bool isLeaf(Tree* root1, Tree* root2);
 	
 private:
 	Tree* left;
