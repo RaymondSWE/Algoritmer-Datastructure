@@ -8,15 +8,16 @@ using namespace std;
 
 Tree::Tree(int w, char c) {
 
-	this->weight = w;
+	weight = w;
 	this->c = c;
 }
 
 Tree::Tree(int w, Tree* t1, Tree* t2) {
 	
-	this->weight = w; 
-	this->left = t1; 
-	this->right = t2; 
+	weight = w; 
+	c = -1;
+	left = t1; 
+	right = t2; 
 };
 
 Tree::~Tree() {
@@ -49,23 +50,24 @@ char Tree::treeTraversal(Tree* root, int leftOrRight)
 	char currElementValue;
 	
 	if (root == NULL) {
-		cout << "end" << endl; 
+		cout << " no more trees" << endl; 
 		return NULL; 
 	}
-	else { cout << "root not null" << endl; }
+	else { cout << " root not null " << endl; }
 
-	if (c == NULL) {
+	if (root->c != -1) {
 		currElementValue = leftOrRight;
 	}else {
-		cout << c; 
-		currElementValue = c; 
+		cout << ": " << root->c;
+		currElementValue = root->c; 
 	}
-	cout << currElementValue;
+	cout << " : " << getWeight();
+	cout << " : " << (int)currElementValue;
 	currElementValue = treeTraversal(root->getLeft(), 0);
 	
 	currElementValue = treeTraversal(root->getRight(), 1);
 	 
-	
+	cout << currElementValue;
 
 	return currElementValue;
 }

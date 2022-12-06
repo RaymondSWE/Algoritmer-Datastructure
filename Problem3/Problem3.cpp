@@ -8,7 +8,7 @@ int main()
 {
 
     TreeWrapper treeWrapper; 
-    string wordString = "magiskafiskmosar";
+    string wordString = "hello";
     cout << wordString << endl;
 
     vector<char> vectorString(wordString.begin(), wordString.end());
