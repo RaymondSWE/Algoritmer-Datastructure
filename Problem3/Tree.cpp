@@ -60,19 +60,9 @@ char Tree::treeTraversal(Tree* root, char leftOrRight)
 		return NULL; 
 	}
 	
-
-	/*if (root->c == -2 && leftOrRight != -1) {
-		currElementValue = leftOrRight;
-	}else {
-		if (root->c != -2) {
-			bitString.push_back(':');
-			currElementValue = root->c;
-		}
-	}*/
 	if (leftOrRight == '0' || leftOrRight == '1') {
 		currElementValue = leftOrRight;
 	}
-
 
 	if (currElementValue != -2) {
 		bitString.push_back(currElementValue);
@@ -81,8 +71,6 @@ char Tree::treeTraversal(Tree* root, char leftOrRight)
 	treeTraversal(root->getLeft(), '0');
 	treeTraversal(root->getRight(), '1');
 	
-	
-
 	if (isLeaf(root->left, root->right)) {
 		if (root->c != -2) {
 			bitString.push_back(':');
@@ -92,15 +80,10 @@ char Tree::treeTraversal(Tree* root, char leftOrRight)
 		bitString.pop_back();
 		bitString.pop_back();
 	}
-
-	/*if (root->c != -2) {
-		printTree(bitString);
-	}*/
 	
-	bitString.pop_back();
-
-	
-	
+	if (!bitString.empty()) {
+		bitString.pop_back();
+	}
 
 	return currElementValue;
 }
