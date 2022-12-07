@@ -26,8 +26,13 @@ public:
     representation of graph*/
     void printGraph();
     
-    // prints BFS traversal from a given source s
+    // prints BFS traversal 
 	void BFS(int s, int relationships[]);
 	
 	void isFriendOrAdversary(int s, int relationships[]);
+	
+	// Prints timecomplexity
+	void timeComplexity();
+	
+	
 };

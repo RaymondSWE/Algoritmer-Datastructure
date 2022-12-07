@@ -24,4 +24,3 @@ int main() {
 	g.BFS(0, relationships);
 	
 }
-

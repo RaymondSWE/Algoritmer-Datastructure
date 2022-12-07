@@ -19,8 +19,11 @@ void Graph::BFS(int s, int relationships[]) {
 	// Mark the current node as visited and enqueue it
 	visited[s] = true;
 	queue.push(s);
-	// 'i' will be used to get all adjacent vertices of a vertex
+
+	// Keep track of the time complexity
+	int timeComplexity = 0;
 	
+	// 'i' will be used to get all adjacent vertices of a vertex
 	list<int>::iterator i;
 	while (!queue.empty()) {
 		// Dequeue a vertex from queue and print it
@@ -34,15 +37,22 @@ void Graph::BFS(int s, int relationships[]) {
 				visited[*i] = true;
 				queue.push(*i);
 			}
+			
+			// Increment time complexity for each edge visited
+			timeComplexity++;
 		}
 	}
 	
-	// Check if the last node visited is an adversary
+	// Check if the last node visited is an adversary or friend
 	isFriendOrAdversary(s, relationships);
 
 
 	// amount search from starting node
 	cout << "Amount of search from starting node: " << s << endl;
+
+	cout << "Time complexity: " << timeComplexity << endl;
+	
+
 	
 }
 
