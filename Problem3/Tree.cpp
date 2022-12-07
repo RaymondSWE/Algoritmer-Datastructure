@@ -20,9 +20,7 @@ Tree::Tree(int w, Tree* t1, Tree* t2) {
 	right = t2; 
 };
 
-Tree::~Tree() {
-
-}
+Tree::~Tree() {}
 
 int Tree::getWeight() const{
 	return weight;
@@ -30,14 +28,8 @@ int Tree::getWeight() const{
 
 void Tree::printTree(vector<char>& bitString) const{
 	// wordstring is the word that gets processed by the priorityqueue
-
 	for (int i = 0; i < bitString.size(); i++) {
-		/*if (bitString[i] > 2) {*/
-			cout << " " << bitString[i];
-		/*}
-		else {
-			cout << " " << (int)bitString[i];
-		}*/
+		cout << " " << bitString[i];
 	}
 	cout << endl; 
 }
@@ -62,14 +54,10 @@ bool Tree::isLeaf(Tree* root1, Tree* root2)
 
 char Tree::treeTraversal(Tree* root, char leftOrRight)
 {
-	char currElementValue = -3;
+	char currElementValue = -2;
 	
 	if (root == NULL) {
 		return NULL; 
-	}
-
-	if (leftOrRight == '0' || leftOrRight == '1') {
-		currElementValue = leftOrRight;
 	}
 	
 
@@ -81,6 +69,11 @@ char Tree::treeTraversal(Tree* root, char leftOrRight)
 			currElementValue = root->c;
 		}
 	}*/
+	if (leftOrRight == '0' || leftOrRight == '1') {
+		currElementValue = leftOrRight;
+	}
+
+
 	if (currElementValue != -2) {
 		bitString.push_back(currElementValue);
 	}
@@ -88,19 +81,22 @@ char Tree::treeTraversal(Tree* root, char leftOrRight)
 	treeTraversal(root->getLeft(), '0');
 	treeTraversal(root->getRight(), '1');
 	
+	
 
 	if (isLeaf(root->left, root->right)) {
 		if (root->c != -2) {
 			bitString.push_back(':');
-			bitString.push_back(currElementValue = root->c);
+			bitString.push_back(root->c);
 		}
 		printTree(bitString);
+		bitString.pop_back();
+		bitString.pop_back();
 	}
 
 	/*if (root->c != -2) {
 		printTree(bitString);
 	}*/
-	bitString.pop_back();
+	
 	bitString.pop_back();
 
 	
