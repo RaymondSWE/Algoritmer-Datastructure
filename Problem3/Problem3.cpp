@@ -10,7 +10,8 @@ int main()
     TreeWrapper treeWrapper; 
     string wordString = "heeelllloo";
     cout << wordString << endl;
-
+	
+	// converts the string to a char vector 
     vector<char> vectorString(wordString.begin(), wordString.end());
 
 	vector<char> tempCharVector(vectorString.size());
