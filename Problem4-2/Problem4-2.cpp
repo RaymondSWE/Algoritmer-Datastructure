@@ -60,19 +60,20 @@ int topDownTC(int n, vector<vector<int>>& resultVector) {
 
 		int result;
 
-		if (resultVector.size() == 0) {
-
+		// pushes the first values into the vector, privents nullptr exeptions 
+		if (resultVector.size() == 0) {			
 			pushBackFunction(n, resultVector);
 		}
 
-		for (int i = 0; i < resultVector.size(); i++) {
+		// checks the already regesterd results for current value of n
+		for (int i = 0; i < resultVector.size(); i++) {	
 			if (resultVector[i][0] == n) {
 				result = resultVector[i][1];
 			}
 		}
 
-		if (result == NULL) {
-
+		// if the current value of n, did not have and answare
+		if (result == NULL) {		
 			pushBackFunction(n, resultVector);
 		}
 
