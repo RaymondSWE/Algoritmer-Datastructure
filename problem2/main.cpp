@@ -8,7 +8,7 @@
 
 using namespace std;
 
-// Driver code
+
 int main() {
 	// Create a graph
 	Graph g(4);
@@ -19,8 +19,10 @@ int main() {
 	g.addEdge(2, 3);
 	// print the graph
 	// Create an array of relationships
-	int relationships[] = { 0, 2 };
-
-	g.BFS(0, relationships);
+	int relationships[16] = {};
+	// In BFS function, we will store the path from startNode to endNode in this vector
+	g.BFS(2, 3, relationships);
 	
+	// Check if the given node is a friend or adversary, put the parameters: startNode and relationships
+	g.isFriendOrAdversary(relationships);
 }

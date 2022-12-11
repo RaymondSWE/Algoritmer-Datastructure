@@ -27,12 +27,10 @@ public:
     void printGraph();
     
     // prints BFS traversal 
-	void BFS(int s, int relationships[]);
+	void BFS(int startNode, int endNode, int relationships[]);
+	// Is it friend or not?
+	void isFriendOrAdversary(int relationships[]);
 	
-	void isFriendOrAdversary(int s, int relationships[]);
-	
-	// Prints timecomplexity
-	void timeComplexity();
-	
+
 	
 };
